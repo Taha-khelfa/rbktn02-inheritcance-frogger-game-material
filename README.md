@@ -24,6 +24,7 @@ Once the player reaches the water the game is won.
    *	index.html - opening index.html should load the game
    *	README.md should contain instructions on how to load and play the game (you will need to add those instructions).
    
+   
    Inside the app.js file, you will need to implement the Player and the Enemy classes, using Object-Oriented JavaScript. Part of the code for the Enemy is provided to you, and you will need to complete the following:
    *	The Enemy function, which initiates the Enemy by:
    *	Loading the image by setting this.sprite to the appropriate image in the image folder (already provided)
@@ -44,7 +45,7 @@ Once the player reaches the water the game is won.
    *	The render method for the Player (use the code from the render method for the Enemy)
    *	The handleInput method, which should receive user input, allowedKeys (the key which was pressed) and move the player according to that input. In particular:
    *	Left key should move the player to the left, right key to the right, up should move the player up and down should move the player down.
-   *	Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).
+   *	Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).//css overflow: hidden
    *	If the player reaches the water the game should be reset by moving the player back to the initial location (you can write a separate reset Player method to handle that).
    *	You can add your own Player methods as needed.
    
