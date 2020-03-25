@@ -25,7 +25,7 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.width = 505;
-    canvas.height = 606;
+    canvas.height = 707;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -93,9 +93,16 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
-    }
+        allHeart.forEach(function(heart){
+            heart.update()
+        })
 
+
+        player.update();
+       //heart.update();
+        
+    }
+    
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -
@@ -112,9 +119,11 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
                 'images/grass-block.png',   // Row 1 of 2 of grass
+                'images/grass-block.png', 
                 'images/grass-block.png'    // Row 2 of 2 of grass
-            ],
-            numRows = 6,
+                   
+            ],  
+            numRows = 7,
             numCols = 5,
             row, col;
 
@@ -152,8 +161,12 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
+        allHeart.forEach(function(heart){
+            heart.render()
+        })
 
          player.render();
+         
     }
 
     /* This function does nothing but it could have been a good place to
@@ -173,7 +186,10 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Heart.png',
+        
+
     ]);
     Resources.onReady(init);
 
