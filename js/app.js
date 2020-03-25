@@ -129,19 +129,57 @@ Heart.prototype.render= function() {
 
 };
 Heart.prototype.update = function (){
-    var heartLeft= this.x -50;
-    var heartRight = this.x +50;
+    var heartLeft= this.x -15;
+    var heartRight = this.x +15;
     var heartTop = this.y -15;
     var heartButtom = this.y +15;
     
     if(player.x > heartLeft && player.x < heartRight && player.y > heartTop && player.y < heartButtom ){
-        this.arr.push(5)
         
+        this.x=200
+        this.y=5
         this.dx=0
         this.dy=0
+        player.award++;
+        
     }
     
 }
+
+//Class Selector to change the player
+
+var Selector = function(){
+    this.sprite='images/Selector.png'
+    this.x=400
+    this.y=400
+    this.index=0
+
+}
+
+Selector.prototype.render = function (){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+}
+Selector.prototype.update = function(){
+    if (this.index>=4){
+        this.index=-1
+    }
+      //while(player.lives>0){
+    if(player.x===400 && player.y===425){
+        
+        player.x=295  // like the case of heart collision , the index is creasly increased , so automatically we have to change the place of the char
+        player.y=320
+        
+      player.sprite=photoPlayer[this.index+1]
+      this.index++
+      console.log(this.index)
+    }
+       
+    //}
+}
+var selector = new Selector ()
+
+
     
     var player = new Player (200,400,50);
     var allEnemies =[];
@@ -160,13 +198,13 @@ allHeart.push(heartOne);
 allHeart.push(heartTwo);
 allHeart.push(heartThree);
 
-allHeart.forEach(function(heart) {
-    
-    if (heart.arr.length !==0){
-        player.award++
-    }
-  
-});
+var photoPlayer = ['images/char-boy.png',
+                  'images/char-cat-girl.png', 
+                  'images/char-horn-girl.png',
+                  'images/char-pink-girl.png',
+                  'images/char-princess-girl.png'
+                ];
+
 
 
 // Place the player object in a variable called player
